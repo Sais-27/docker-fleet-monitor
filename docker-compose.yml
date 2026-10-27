@@ -1,5 +1,3 @@
-
-
 services:
   db:
     image: postgres:17
@@ -8,13 +6,13 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
       interval: 5s
       timeout: 3s
       retries: 10
-      
+
   api:
     build: ./api
     environment:
@@ -22,11 +20,26 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
+    ports:
+      - "3000:3000"
     depends_on:
       db:
         condition: service_healthy
-    ports:
-      - "3000:3000"
+
+  server-01:
+    build: ./agent
+    image: fleet-agent:2.0
+    environment:
+      SERVER_NAME: server-01
+      API_URL: http://api:3000
+
+  server-02:
+    build: ./agent
+    image: fleet-agent:2.0
+    environment:
+      SERVER_NAME: server-02
+      API_URL: http://api:3000
+      INTERVAL_SECONDS: "2"
+
 volumes:
-  db_data:
-  
+  db-data:
