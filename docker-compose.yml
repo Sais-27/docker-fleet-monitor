@@ -20,11 +20,16 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
-    ports:
-      - "3000:3000"
     depends_on:
       db:
         condition: service_healthy
+
+  dashboard:
+    build: ./dashboard
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
 
   server-01:
     build: ./agent

@@ -1,0 +1,52 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #f4f5f7;
+  margin: 0;
+  padding: 2rem;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  border-left: 6px solid #999;
+}
+
+.card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.card p {
+  margin: 0.25rem 0;
+}
+
+.card.healthy { border-left-color: #2e9e4f; }
+.card.warning { border-left-color: #e0a800; }
+.card.critical { border-left-color: #d9372b; }
+.card.down { border-left-color: #6b7280; opacity: 0.7; }
+
+.badge {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.time {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.error {
+  color: #d9372b;
+}
