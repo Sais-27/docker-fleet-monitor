@@ -1,11 +1,12 @@
 import json
 import os
 import random
+import socket
 import time
 
 import requests
 
-SERVER_NAME = os.getenv("SERVER_NAME", "server-01")
+SERVER_NAME = os.getenv("SERVER_NAME") or f"server-{socket.gethostname()[:6]}"
 INTERVAL = int(os.getenv("INTERVAL_SECONDS", "5"))
 API_URL = os.getenv("API_URL", "http://api:3000")
 

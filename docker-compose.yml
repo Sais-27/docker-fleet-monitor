@@ -31,20 +31,17 @@ services:
     depends_on:
       - api
 
-  server-01:
+  agent:
     build: ./agent
-    image: fleet-agent:2.0
+    image: fleet-agent:3.0
     environment:
-      SERVER_NAME: server-01
       API_URL: http://api:3000
-
-  server-02:
-    build: ./agent
-    image: fleet-agent:2.0
-    environment:
-      SERVER_NAME: server-02
-      API_URL: http://api:3000
-      INTERVAL_SECONDS: "2"
+      INTERVAL_SECONDS: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 64M
 
 volumes:
   db-data:
