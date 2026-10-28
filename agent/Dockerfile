@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:3.12-alpine
 
 WORKDIR /app
 
@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY agent.py .
 
-RUN useradd --create-home appuser
+RUN adduser -D appuser
 USER appuser
 
 CMD ["python", "agent.py"]
