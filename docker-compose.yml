@@ -42,6 +42,7 @@ services:
   dashboard:
     build: ./dashboard
     restart: unless-stopped
+    logging: *default-logging
     ports:
       - "8080:80"
     healthcheck:
