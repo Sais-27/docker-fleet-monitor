@@ -1,0 +1,6 @@
+services:
+  agent:
+    environment:
+      INTERVAL_SECONDS: "5"
+    deploy:
+      replicas: 8
