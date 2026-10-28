@@ -1,7 +1,13 @@
+x-logging: &default-logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
 services:
   db:
     image: postgres:17
     restart: unless-stopped
+    logging: *default-logging
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -17,6 +23,7 @@ services:
   api:
     build: ./api
     restart: unless-stopped
+    logging: *default-logging
     environment:
       DB_HOST: db
       DB_USER: ${DB_USER}
@@ -48,8 +55,9 @@ services:
 
   agent:
     build: ./agent
-    image: fleet-agent:3.0
+    image: fleet-agent:3.1
     restart: unless-stopped
+    logging: *default-logging
     environment:
       API_URL: http://api:3000
       INTERVAL_SECONDS: "3"
