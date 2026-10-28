@@ -1,6 +1,6 @@
 # Docker Fleet Monitor
 
-A small server-health dashboard that runs entirely in Docker. Simulated "servers" report their CPU, memory and disk usage to an API, the data is stored in Postgres, and a React dashboard (served by Nginx) shows which servers are healthy, warning, critical or down. One command starts everything.
+A small server health dashboard that runs entirely in Docker. Simulated "servers" report their CPU, memory and disk usage to an API, the data is stored in Postgres, and a React dashboard (served by Nginx) shows which servers are healthy, warning, critical or down. One command starts everything.
 
 ![Dashboard](docs/dashboard.png)
 
