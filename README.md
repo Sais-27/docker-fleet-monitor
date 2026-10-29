@@ -127,6 +127,10 @@ I tested this for real: backed up, ran `docker compose down -v` to destroy the v
 └── README.md
 ```
 
+## Pre-built images
+
+Published on Docker Hub: `saisankat27/fleet-monitor-agent`, `saisankat27/fleet-monitor-api`, `saisankat27/fleet-monitor-dashboard`.
+
 ## Known limitations and next steps
 
 - Metrics are simulated. Real ones (for example from `psutil`) would be the next step.
